@@ -1,5 +1,5 @@
 
-# CloudProxy
+# AnimeManga
 
 Proxy server to bypass Cloudflare protection
 
@@ -8,24 +8,24 @@ See the known issues section.
 
 ## How it works
 
-CloudProxy starts a proxy server and it waits for user requests in an idle state using few resources.
+AnimeManga starts a proxy server and it waits for user requests in an idle state using few resources.
 When some request arrives, it uses [kayoanime](https://kayoanimetv.com) with the stealth plugin
 to create a headless browser (Chrome). It opens the URL with user parameters and waits until the
 Cloudflare challenge is solved (or timeout). The HTML code and the cookies are sent back to the
 user and those cookies can be used to bypass Cloudflare using other HTTP clients.
 
-**NOTE**: Web browsers consume a lot of memory. If you are running CloudProxy on a machine with few RAM,
+**NOTE**: Web browsers consume a lot of memory. If you are running AnimeManga on a machine with few RAM,
 do not make many requests at once. With each request a new browser is launched unless you use a session ID which is strongly recommended. However, if you use sessions, you should make sure to close them as soon as you are done using them.
 
 ## Installation
 
 It requires NodeJS.
 
-Run `PUPPETEER_PRODUCT=chrome npm install` to install CloudProxy dependencies.
+Run `PUPPETEER_PRODUCT=chrome npm install` to install AnimeManga dependencies.
 
 ## Usage
 
-First run `npm run build`. Once the TypeScript is compiled, you can use `npm start` to start CloudProxy.
+First run `npm run build`. Once the TypeScript is compiled, you can use `npm start` to start AnimeManga.
 
 Example request:
 
@@ -193,7 +193,7 @@ free to create an issue and/or submit a PR.
 
 ## Environment variables
 
-To set the environment vars in Linux run `export LOG_LEVEL=debug` and then start CloudProxy in the same shell.
+To set the environment vars in Linux run `export LOG_LEVEL=debug` and then start AnimeManga in the same shell.
 
 Name | Default | Notes
 |--|--|--|
@@ -207,7 +207,7 @@ HEADLESS | true | This is used to debug the browser by not running it in headles
 ## Captcha Solvers
 
 Sometimes CF not only gives mathmatical computations and browser tests, sometimes they also require
-the user to solve a captcha. If this is the case, CloudProxy will return the captcha page. But that's
+the user to solve a captcha. If this is the case, AnimeManga will return the captcha page. But that's
 not very helpful to you is it?
 
 This method makes use of the [animixplay](https://animixplay.fun) project which allows users to collect thier own tokens from ReCaptcha V2/V3 and hCaptcha for free.
@@ -252,8 +252,8 @@ docker compose down
 
 # You may also build and run manually, however the configuration is
 # already set in the compose file, that way you dont have to remember it.
-docker build -t cloudproxy:latest .
-docker run --restart=always --name cloudproxy -p 8191:8191 -d cloudproxy:latest
+docker build -t AnimeManga:latest .
+docker run --restart=always --name AnimeManga -p 8191:8191 -d AnimeManga:latest
 ```
 
 ## TypeScript`enter code here`
